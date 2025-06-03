@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Bruce Themes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
 
+    h1 {
+      text-align: center;
+      color: #bb86fc;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      text-align: center;
+      color: #a0a0a0;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .theme-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .theme {
+      background-color: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .theme:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 14px rgba(187, 134, 252, 0.4);
+    }
+
+    .theme h2 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1.5rem;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #222;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      color: #e0e0e0;
+      position: relative;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #bb86fc;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: #aaa;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .download-button {
+      background: linear-gradient(135deg, #bb86fc, #3700b3);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .download-button:hover {
+      background: linear-gradient(135deg, #9b5de5, #3a0ca3);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>My Bruce Themes</h1>
+  <p>I create designs as a hobby and I’d love to share my themes with you for free.</p>
+
+  <div class="theme-list">
+    <div class="theme" onclick="openModal('Dark Minimal Theme', 'A sleek, dark theme for focus and productivity.', 'downloads/dark-minimal.zip', 'previews/dark-minimal.png')">
+      <h2>🌙 Dark Minimal Theme</h2>
+    </div>
+
+    <div class="theme" onclick="openModal('Pastel Light Theme', 'Soft pastel tones to relax your eyes – perfect for long sessions.', 'downloads/pastel-light.zip', 'previews/pastel-light.png')">
+      <h2>🎨 Pastel Light Theme</h2>
+    </div>
+
+    <div class="theme" onclick="openModal('Retro Terminal Theme', 'A classic hacker-style look with neon colors on black.', 'downloads/retro-terminal.zip', 'previews/retro-terminal.png')">
+      <h2>💾 Retro Terminal Theme</h2>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="themeModal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal()">×</button>
+      <img id="modalImage" src="" alt="Theme Preview" />
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <a id="modalDownload" class="download-button" href="#" download>Download Theme</a>
+    </div>
+  </div>
+
+  <script>
+    function openModal(title, description, downloadLink, imageUrl) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDescription').textContent = description;
+      document.getElementById('modalDownload').href = downloadLink;
+      document.getElementById('modalImage').src = imageUrl;
+      document.getElementById('themeModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('themeModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
